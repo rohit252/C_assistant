@@ -1,0 +1,48 @@
+# # # # # This file contains tests to evaluate that your bot behaves as expected. 
+
+####   If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 
+  steps:
+  - user: |
+      hello there
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+  
+- story: unhappy path
+  steps:
+  - user: |
+        hey
+    intent: greet
+  - action: utter_greet
+  - user: |
+        you are annoying
+    intent: chitchat/Annoying
+  - action: utter_chitchat/Annoying
+  
+- story: unhappy path 1
+  steps:
+  - user: |
+        hey
+    intent: greet
+  - action: utter_greet
+  - user: |
+        no
+    intent: deny
+  - action: utter_bye
+
+- story: unhappy path 2
+  steps:
+  - user: |
+        hey
+    intent: greet
+  - action: utter_greet
+  - user: |
+        where are you from
+    intent: chitchat/ask_wherefrom
+  - action: utter_chitchat/ask_wherefrom

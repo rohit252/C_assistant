@@ -1,0 +1,341 @@
+version: "2.0"
+nlu:
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - good
+    - amazing
+    - I am doing good
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: chitchat/tell_name
+  examples: |
+    - what is your name?
+    - tell me your name
+    - what others call you
+    - what should i call you?
+    - who is this
+    - who are you
+    - who am i talking to
+    - what's your name
+    - who am i speaking with
+    - who r u
+    - whats ur name
+    - what are you called?
+    - who are you?
+    - who is it?
+    - who are u?
+    - hi! what's your name?
+    - give me your introduction.
+    - introduce yourself.
+    - give me your intro.
+    - tell me about yourself
+- intent: my_name
+  examples: |
+    - my name is [ashish](name)
+    - my name is [rahul](name)
+    - my name is [apneet](name)
+    - [ashish](name) is my name
+    - [ashish](name) this side
+    - people call me [ashish](name)
+- intent: age
+  examples: |
+    - my age is [27](age)
+    - [25](age)
+    - [24](age) is my age
+    - my age is [26](age)
+# - intent: zero
+  # examples: |
+    # - 0
+- intent: zero_answer
+  examples: |
+    - I am a student.
+    - I study.
+    - I am studying.
+    - I am in school.
+    - I am in university.
+    - I am doing Masters.
+    - I am doing bachelors.
+    - I am doing phd.
+    - I am doing postdoc.
+# - intent: one
+  # examples: |
+    # - 1
+- intent: one_answer
+  examples: |
+    - I am feeling tired
+    - not good
+    - feeling like I lost
+    - need help
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: chitchat/ask_HowOld
+  examples: |
+    - whats your age?
+    - how old?
+    - what's your age?
+    - when were you born?
+    - what is your birthday?
+    - when is your birthday?
+    - how many years old are you?
+    - do you know how old you are?
+    - what is your exact age?
+    - what year were you born?
+    - can you tell me your age?
+    - What is your age?
+    - What is your birthdate?
+    - How old will you be on your next birthday?
+    - When do you celebrate your day of birth?
+    - How old were you on your last birthday?
+    - How many candles were on your last birthday cake?
+    - Do you have friends the same age as you, if so, how old are they?
+    - Tell me your day, month and year of birth.
+    - Whats your age? and you are how many years old?
+    - whats your birth year?
+    - what age were you when you celebrated your last birthday?
+    - how old were you when you celebrated your last birthday?
+    - tell me your age?
+    - how about your age
+    - how old were you on your last birthday?
+    - what age are you
+    - how old will you be this year?
+    - What year were you born?
+    - How long have you been around?
+    - How long have you been alive?
+    - What was your age on your last birthday?
+    - What will be your age on your next birthday?
+    - How many years have you lived?
+    - How many years have you been alive?
+    - How long have you occupied the earth?
+- intent: chitchat/ask_wherefrom
+  examples: |
+    - where do you live
+    - where are you from?
+    - So where are you from
+    - Where are you?
+    - Where were you born?
+    - What city were you born in?
+    - Where did you grow up?
+    - What state were you born in?
+    - What country were you born in?
+    - Where do you come from?
+    - Where were you at before you were here?
+    - Where from?
+    - Do you know where you come from?
+    - where's your home town?
+    - what country are you from?
+    - are you from around here?
+    - where did you grow up?
+    - where are your parents from?
+    - where did you spend your youth?
+    - where did you come from?
+    - Where do you consider home?
+    - What city do you claim to for your birth?
+    - What citizenship do you lay claim to?
+
+- intent: chitchat/Annoying
+  examples: |
+    - you are annoying me so much
+    - you're incredibly annoying
+    - I find you annoying
+    - you are annoying
+    - you're so annoying
+    - how annoying you are
+    - you annoy me
+    - you are annoying me
+    - you are irritating
+    - you are such annoying
+    - you're too annoying
+    - you are very annoying
+    - Why are you annoying me so much
+    - How annoying!
+    - It's annoying
+    - That's annoying
+    - It's just annoying
+    - That's so annoying
+    - You really annoy me
+    - You're starting to annoy me
+    - you are dump
+    - you are so stupid
+    - fuck off
+    - fuck you
+    - fuck u
+    - you are dump cori
+    - you are useless
+    - You are bad
+    - You are not good
+    - you are very bad
+    - You're bad
+    - You're not good
+    - you're very bad
+- intent: chitchat/Beautiful
+  examples: |
+    - you're cute
+    - you're attractive
+    - you are beautiful
+    - you're looking good today
+    - you are so beautiful
+    - you look amazing
+    - you look so good
+    - you're so gorgeous
+    - you are too beautiful
+    - you look great
+    - you look so well
+    - I like the way you look now
+    - I think you're beautiful
+    - why are you so beautiful
+    - you are so beautiful to me
+    - you are cute
+    - you are gorgeous
+    - you are handsome
+    - you are looking awesome
+    - you look amazing today
+    - you are looking beautiful today
+    - you are looking great
+    - you are looking pretty
+    - you are looking so beautiful
+    - you are looking so good
+    - you are pretty
+    - you are really beautiful
+    - you are really cute
+    - you are really pretty
+    - you are so attractive
+    - you are so beautiful today
+    - you are so cute
+    - you are so gorgeous
+    - you are so handsome
+    - you are so pretty
+    - you are very attractive
+    - you are very beautiful
+- intent: chitchat/propose
+  examples: |
+    - cori, I love you
+    - I fell in love with you
+    - will you marry me cori
+    - will you marry me
+    - love you
+- intent: chitchat/Assistant
+  examples: |
+    - Do you any friends
+    - hey cori, do you know siri
+    - are you friends with alexa
+    - are you better than other assistant
+- intent: chitchat/joke
+  examples: |
+    - Tell me a joke
+    - joke
+    - can you tell me a joke
+    - more jokes
+    - more joke
+- intent: chitchat/music
+  examples: |
+    - sing me a song
+    - play some music
+- intent: sweat_it_out
+  examples: |
+    - Show me [yoga,workout](physical) some exercise videos.
+    - [yoga,workout](physical)
+- intent: weather
+  examples: |
+    - what's the weather
+    - i want to know the weather of today
+    - tell me the weather forcast
+    - hows the weather today
+
+- intent: city
+  examples: |
+    - Delhi
+    - delhi
+    - chandigarh
+    - mohali
+    - mumbai
+    - jaipur
+    - london
+    - kiel
+    - karlsruhe
+    - heidelberg,DE
+    - hamburg
+    - berlin
+    - kota
+    - rome
+
+- intent: get_started
+  examples: |
+    - start
+    - plese start
+
+- intent: feeling_low
+  examples: |
+    - "I have some related issues"
+    - "I have money problem"
+    - "I had an altercation with my friend"
+    - "I had an altercation with my collegue"
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later

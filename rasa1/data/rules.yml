@@ -1,0 +1,53 @@
+version: "2.0"
+
+rules:
+
+
+# - rule: ask feedback anytime the user says goodbye
+  # steps:
+  # - intent: goodbye
+  # - action: utter_ask_feedback
+  # - intent: feedback
+    # entities:
+    # - feedback_value:'negative'
+  # - slot_was_set:
+        # - feedback_value: 'negative'
+  # - action: suggestion_form
+  # - active_loop: suggestion_form
+
+- rule: Submit suggestion form
+  condition:
+  # Condition that form is active.
+  - active_loop: suggestion_form
+  steps:
+  # Form is deactivated
+  - action: suggestion_form
+  - active_loop: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_suggestion_form
+
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form
+  steps:
+  # Form is deactivated
+  - action: user_details_form
+  - active_loop: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit
+  
+  
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+  
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+  
+
+

@@ -1,0 +1,202 @@
+version: "2.0"
+
+stories:
+
+
+- story: welcome message
+  steps:
+  - intent: get_started
+  - action: utter_welcome_msg
+
+- story: intro
+  steps:
+  - intent: tell_name
+  - action: utter_name
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: affirm
+  - action: user_details_form
+  - active_loop: user_details_form
+
+
+- story: happy name path1
+  steps: 
+  - intent: affirm
+  - action: utter_ques
+  - action: action_question
+  - slot_was_set:
+    - q_id: '0'
+  # - intent: questions
+    # entities:
+    # - q_id: '1'
+  # - slot_was_set:
+      # - q_id: '1'
+  # - action: utter_question1
+  - intent: score
+    entities:
+    - score_value: '0'
+  - slot_was_set:
+        - score_value: '0'
+  - action: utter_zero
+  - action: utter_zero_ask
+  - intent: zero_answer
+  - action: utter_zero_ask1
+  - intent: affirm
+  - action: utter_zero_ask2
+  - action: action_study
+  # - action: utter_next_question
+  # - intent: next
+    # entities:
+    # - next_question: 'go on'
+  # - slot_was_set:
+        # - next_question: 'go on'
+  - action: action_next_question
+
+- story: happy name path11
+  steps:
+  - intent: affirm
+  - action: utter_ques
+  - action: action_question
+  - slot_was_set:
+    - q_id: '0'
+  # - intent: questions
+    # entities:
+    # - q_id: '1'
+  # - slot_was_set:
+      # - q_id: '1'
+  # - action: utter_question1
+  - intent: score
+    entities:
+    - score_value: '1'
+  - slot_was_set:
+        - score_value: '1'
+  - action: utter_one
+  - intent: one_answer
+  - action: utter_one_ask
+  - action: utter_one_askk
+  - intent: affirm
+  - action: utter_one_ask1
+  - action: action_movie
+  - action: action_play_video
+  - action: utter_exer
+  - intent: affirm
+  - action: utter_exer1
+  - intent: sweat_it_out
+    entities:
+    - physical: {physical}
+  - action: action_exercise
+  # - action: utter_next_question
+  # - intent: next
+    # entities:
+    # - next_question: 'go on'
+  # - slot_was_set:
+        # - next_question: 'go on'
+  - action: action_next_question
+  
+- story: happy name path2
+  steps: 
+  - intent: affirm
+  - action: utter_ques
+  - action: action_question
+  - slot_was_set:
+    - q_id: '1'
+  # - intent: questions
+    # entities:
+    # - q_id: '2'
+  # - slot_was_set:
+      # - q_id: '2'
+  # - action: utter_question1
+  - intent: score
+    entities:
+    - score_value: '0'
+  - slot_was_set:
+        - score_value: '0'
+  - action: utter_zero
+  - action: utter_zero_ask
+  - intent: zero_answer
+  - action: utter_zero_ask1
+  - intent: affirm
+  - action: utter_zero_ask2
+  - action: action_study
+  # - action: utter_next_question
+  # - intent: next
+    # entities:
+    # - next_question: 'go on'
+  # - slot_was_set:
+        # - next_question: 'go on'
+  - action: action_next_question
+  
+- story: happy name path21
+  steps: 
+  - intent: affirm
+  - action: utter_ques
+  - action: action_question
+  - slot_was_set:
+    - q_id: '1'
+  # - intent: questions
+    # entities:
+    # - q_id: '2'
+  # - slot_was_set:
+      # - q_id: '2'
+  # - action: utter_question1
+  - intent: score
+    entities:
+    - score_value: '1'
+  - slot_was_set:
+        - score_value: '1'
+  - action: utter_2_ans
+  - intent: feeling_low
+  - action: utter_2_ans1
+  - action: utter_2_ans2
+  - intent: affirm
+  - action: utter_zero_ask2
+  - action: action_article
+  # - action: utter_next_question
+  # - intent: next
+    # entities:
+    # - next_question: 'go on'
+  # - slot_was_set:
+        # - next_question: 'go on'
+  - action: action_next_question
+
+- story: happy_weather
+  steps:
+  - intent: weather
+  - action: utter_city
+  - intent: city
+  - action: action_weather 
+
+
+- story: unhappy path
+  steps:
+  - intent: deny
+  - action: utter_bye  
+  
+- story: ask feedback anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_ask_feedback
+  - intent: feedback
+    entities:
+    - feedback_value:'negative'
+  - slot_was_set:
+        - feedback_value: 'negative'
+  - action: suggestion_form
+  - active_loop: suggestion_form
+
+- story: ask feedback anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_ask_feedback
+  - intent: feedback
+    entities:
+    - feedback_value:'positive'
+  - slot_was_set:
+        - feedback_value: 'positive'
+  - action: utter_positive
+

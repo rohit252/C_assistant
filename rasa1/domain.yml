@@ -1,0 +1,320 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- affirm:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- tell_name:
+    use_entities: true
+- zero:
+    use_entities: true
+- zero_answer:
+    use_entities: true
+- one:
+    use_entities: true
+- one_answer:
+    use_entities: true
+- two:
+    use_entities: true
+- three:
+    use_entities: true
+- deny:
+    use_entities: true
+- restart:
+    use_entities: true
+- chitchat:
+    use_entities: true
+- get_started:
+    use_entities: true
+- city:
+    use_entities: true
+- weather:
+    use_entities: true
+- feeling_low:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- sweat_it_out:
+    use_entities:
+    - physical
+- my_name:
+    use_entities:
+    - name
+- my_age:
+    use_entities:
+    - age
+- questions:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+- age:
+    use_entities: true
+- feedback:
+    use_entities: true
+- score:
+    use_entities: true
+- next:
+    use_entities: true
+- my_suggestion:
+    use_entities: true
+entities:
+- name
+- age
+- physical
+- q_id
+- feedback_value
+- score_value
+- next_question
+- suggestion
+slots:
+  name:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  age:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  physical:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  feedback_value:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - 'positive'
+    - 'negative'
+  score_value:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - '1'
+    - '0'
+  q_id:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+  next_question:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - 'go on '
+    - 'no please'
+  suggestion:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  step:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_welcome_msg:
+  - text: Welcome, how can I help you
+  utter_greet:
+  - text: Hey! How are you?
+  utter_happy:
+  - text: 'Great, carry on!, can I ask your details! '
+  utter_ask_name:
+  - text: What is your name?
+  utter_ask_age:
+  - text: What is your age?
+  utter_details_thanks:
+  - text: |-
+      Thanks for providing the given details 
+      Name: {Name},
+      age: {age}. 
+  utter_ask_suggestion:
+  - text: Your suggestion means a lot to us. Feel free to write your views, so that we can improve? 
+  utter_thanks_suggestion:
+  - text: Thank you for the suggestion. We will definitely work on that.
+  utter_ques:
+  - text: 'Hi {name}, Over the last 2 weeks, how often have you been bothered by any of the following problems? '
+  utter_1:
+  - text: 'Little interest or pleasure in doing things ?  '
+  utter_2:
+  - text: ' Feeling down, depressed, or hopeless ? '
+  utter_3:
+  - text: ' Trouble falling or staying asleep, or sleeping too much ? '
+  utter_question_1:
+  - buttons:
+    - payload: '/questions{"q_id":"1"}'
+      title: confirm
+    - payload: '/goodbye'
+      title: ask later
+    text: Please confirm to continue
+  
+  utter_question_2:
+  - buttons:
+    - payload: '/questions{"q_id":"2"}'
+      title: confirm
+    - payload: '/goodbye'
+      title: ask later
+    text: Please confirm to continue
+  utter_question1:
+  - buttons:
+    - payload: '/score{"score_value":"0"}'
+      title: not at all
+    - payload: '/score{"score_value":"1"}'
+      title: several days
+    text: choose an option
+  utter_exer:
+  - text: do you want to watch some exercise videos
+  utter_exer1:
+  - text: 'what kind of exercise videos do you want to watch? '
+  utter_zero:
+  - text: that's great
+  utter_zero_ask:
+  - text: looks like your life is on the right track. So, what do you do?
+  utter_zero_ask1:
+  - text: "wow! that's very nice, I myself was once a student and now I am working and I have a lot of things to manage, sometimes I just feel too tired. But, Student life is the golden period of your life. Let me provide you some links to help you shape your career. Do you want them ? "
+  utter_zero_ask2:
+  - text: 'here is the link '
+  utter_one:
+  - text: sometimes I also have little interest in doing thinks because of my hectic schedule? So, how are you feeling right now?
+  utter_one_ask:
+  - text: ' Sorry to hear that, I can understand you very well. It is because, sometimes we are too busy in our work and we cannot spare time for ourself. One suggestion would be: To go outside and do some activities it will help your nervous system to relax and you can feel the changes in your mood immediately then. '
+  utter_one_askk:
+  - text: 'Also, I have a list of high rated IMDB movies and web series, in case you are a movie or web series lover. Do you want them? '
+  utter_one_ask1:
+  - text: here is the list
+  utter_two:
+  - text: do some more sports and communicate with your friends, do some yoga daily for 30 minutes
+  utter_three:
+  - text: consult doctor
+  utter_answer:
+  - text: keep going!
+  utter_bye:
+  - text: 'bye, hope to see you soon {name} :), Till then '
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  - text: my bad, could you please repeat it for me?
+  utter_city:
+  - text: which city you want to check for?
+  utter_temp:
+  - text: Today's temperature is {temp} degree Celcius.
+  utter_2_ans:
+  - text: 'Hey {name}, do you want to tell me what happened '
+  - text: 'I am here for you, please elaborate your situation '
+  utter_2_ans1:
+  - text: sometimes we all have to go through these circumstances
+  utter_2_ans2:
+  - text: ' I have some great articles and videos, that will surely help you in boosting your mood and confidence. Can I share my archive with you'
+  utter_ask_feedback_message:
+  - text: Hey, Can I ask for a favor? I would really appreciate your suggestions for my improvement :D.
+  utter_ask_feedback:
+  - buttons:
+    - payload: '/feedback{"feedback_value": "positive"}'
+      title: 👍
+    - payload: '/feedback{"feedback_value": "negative"}'
+      title: 👎
+    text: How is this conversation going?
+  utter_next_question:
+  - buttons:
+    - payload: '/next{"next_question": "go on"}'
+      title: please
+    - payload: '/next{"next_question": "no please"}'
+      title: No, Thank you!
+    text: Do you want to anwswer next question? 
+  
+  utter_positive:
+  - text: Thanks for liking our services.  
+ 
+
+
+actions:
+- action_submit
+- action_play_video
+- utter_greet
+- utter_happy
+- utter_name
+- utter_ques
+- utter_question1
+- utter_question2
+- utter_zero
+- utter_one
+- utter_two
+- utter_three
+- utter_answer
+- utter_bye
+- action_restart
+- utter_welcome_msg
+- utter_zero_ask
+- utter_zero_ask1
+- utter_zero_ask2
+- utter_one_ask
+- utter_one_ask1
+- action_study
+- action_movie
+- utter_one_askk
+- utter_chitchat
+- utter_exer
+- utter_exer1
+- action_exercise
+- action_weather
+- utter_city
+- utter_temp
+- action_question
+- utter_1
+- utter_2
+- utter_3
+- utter_2_ans
+- utter_2_ans1
+- utter_2_ans2
+- action_article
+- utter_ask_feedback
+- utter_ask_feedback_message
+- utter_next_question
+- action_next_question
+- utter_ask_suggestion
+- utter_thanks_suggestion
+- action_submit_suggestion_form
+- utter_positive
+
+
+forms:
+  suggestion_form:
+    suggestion:
+      - type: from_text
+
+
+  user_details_form:
+    age:
+    - entity: age
+      type: from_text
+    name:
+    - entity: name
+      type: from_text
+e2e_actions: []
